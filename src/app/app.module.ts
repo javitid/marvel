@@ -4,6 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { HttpErrorInterceptor } from '../interceptors/http-error-interceptor';
     HttpClientModule,
 
     // Material
+    MatSortModule,
     MatTableModule
   ],
   providers: [

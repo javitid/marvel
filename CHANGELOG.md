@@ -13,3 +13,4 @@
 - Superhero interface
 - Load JSON file from data service using HttpClient
 - Show superheroes data in an Angular Material table
+- Sort values by each column
