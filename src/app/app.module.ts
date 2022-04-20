@@ -14,13 +14,15 @@ import { ErrorComponent } from '../components/error/error.component';
 import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 import { GlobalErrorHandlerService } from '../services/global-error-handler.service';
 import { HttpErrorInterceptor } from '../interceptors/http-error-interceptor';
+import { TableComponent } from '../elements/table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ErrorComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
