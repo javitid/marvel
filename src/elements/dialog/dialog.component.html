@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Information about {{data.nameLabel}}</h2>
+<mat-dialog-content class="mat-typography">
+    <div>Name: {{data.nameLabel}}</div>
+    <div>Gender: {{data.genderLabel}}</div>
+    <div>Citizenship: {{data.citizenshipLabel}}</div>
+    <div>Skills: {{data.skillsLabel}}</div>
+    <div>Occupation: {{data.occupationLabel}}</div>
+    <div>Member of: {{data.memberOfLabel}}</div>
+    <div>Creator: {{data.creatorLabel}}</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

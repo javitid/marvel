@@ -1,2 +1,2 @@
 <app-chips [superheroes]="superheroes" (updateList)="updateList($event)"></app-chips>
-<app-table [columnsToDisplay]="columnsToDisplay" [superheroes]="superheroes"></app-table>
+<app-table [columnsToDisplay]="columnsToDisplay" [superheroes]="superheroes" (rowSelected)="openDialog($event)"></app-table>

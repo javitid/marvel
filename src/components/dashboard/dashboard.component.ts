@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
-import { DataService } from '../../services/data.service'; 
+import { DialogComponent } from '../../elements/dialog/dialog.component';
 import { Superhero } from '../../interfaces/superhero.interface';
+import { DataService } from '../../services/data.service'; 
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,6 +16,7 @@ export class DashboardComponent implements OnInit {
   public superheroes: Observable<Superhero[]>;
 
   constructor(
+    public readonly dialog: MatDialog,
     private readonly dataService: DataService
   ) { }
 
@@ -27,5 +30,9 @@ export class DashboardComponent implements OnInit {
 
   public updateList(newList: Observable<Superhero[]>) {
     this.superheroes = newList;
+  }
+
+  public openDialog(superheroSelected: Superhero) {
+    this.dialog.open(DialogComponent, {data: superheroSelected });
   }
 }

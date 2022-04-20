@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
@@ -21,6 +22,7 @@ import { HttpErrorInterceptor } from '../interceptors/http-error-interceptor';
 import { TableComponent } from '../elements/table/table.component';
 import { ChipsComponent } from '../elements/chips/chips.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DialogComponent } from '../elements/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ErrorComponent,
     PageNotFoundComponent,
     TableComponent,
-    ChipsComponent
+    ChipsComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     // Material
     MatAutocompleteModule,
     MatChipsModule,
+    MatDialogModule,
     MatIconModule,
     MatSelectModule,
     MatSortModule,
