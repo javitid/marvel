@@ -4,3 +4,4 @@
 - Upgrade from Angular 12 to Angular 13.2.6
 - Using scss instead sass
 - Add dashboard component
+- Add angular material 13.3.3
