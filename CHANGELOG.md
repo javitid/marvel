@@ -5,3 +5,8 @@
 - Using scss instead sass
 - Add dashboard component
 - Add angular material 13.3.3
+- Add error and page-not-found components
+- Update routing file to redirect to the correct page
+- Add HttpErrorInterceptor to catch and set the HTTP error message in the error service
+- Add GlobalErrorHandlerService to redirect to error page when there is any error
+- Add dataService to be able to send HTTP requests GET and POST to retrieve data from any url (it could not be used in this exercise)

@@ -1,0 +1,8 @@
+<h1>Error page</h1>
+<div *ngIf="error">
+    <div>{{error?.name}} {{error?.status}}</div>
+    <div>{{error?.error?.message}}</div>
+    <div>Url: {{error?.url}}</div>
+</div>
+
+<button class="button" (click)="goToDashboard()">Go to dashboard</button>
