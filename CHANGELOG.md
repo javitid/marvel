@@ -15,3 +15,4 @@
 - Show superheroes data in an Angular Material table
 - Sort values by each column
 - Move table to a new component into elements folder
+- Solve issues deploying in gitlab, wrong assets route,...

@@ -9,7 +9,7 @@ import { Superhero } from '../interfaces/superhero.interface';
 })
 export class DataService {
   public httpError?: HttpErrorResponse;
-  private jsonURL = '../../assets/wikipedia_marvel_data.json';
+  private jsonURL = './assets/wikipedia_marvel_data.json';
   
   constructor(private http: HttpClient) { }
 

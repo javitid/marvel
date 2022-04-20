@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "coverage": "ng test --no-watch --code-coverage",
-    "deploy": "gh-pages -d dist/marvel"
+    "deploy": "gh-pages -d dist/marvel",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
