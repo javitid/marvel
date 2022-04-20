@@ -16,3 +16,4 @@
 - Sort values by each column
 - Move table to a new component into elements folder
 - Solve issues deploying in gitlab, wrong assets route,...
+- Add chips component into elements folder, first version with functions but without table updating

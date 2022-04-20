@@ -24,4 +24,8 @@ export class DashboardComponent implements OnInit {
     // Get superheroes from the service
     this.superheroes = this.dataService.getSuperheroes();
   }
+
+  public updateList(newList: Observable<Superhero[]>) {
+    this.superheroes = newList;
+  }
 }
