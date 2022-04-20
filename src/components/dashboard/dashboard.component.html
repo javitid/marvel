@@ -1,1 +1,6 @@
-<p>dashboard works!</p>
+<table mat-table [dataSource]="superheroes" class="mat-elevation-z8">
+    <mat-text-column name="{{header}}" *ngFor="let header of columnsToDisplay"></mat-text-column>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>

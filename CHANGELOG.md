@@ -10,3 +10,6 @@
 - Add HttpErrorInterceptor to catch and set the HTTP error message in the error service
 - Add GlobalErrorHandlerService to redirect to error page when there is any error
 - Add dataService to be able to send HTTP requests GET and POST to retrieve data from any url (it could not be used in this exercise)
+- Superhero interface
+- Load JSON file from data service using HttpClient
+- Show superheroes data in an Angular Material table

@@ -2,13 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { Superhero } from '../interfaces/superhero.interface';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  httpError?: HttpErrorResponse;
+  public httpError?: HttpErrorResponse;
+  private jsonURL = '../../assets/wikipedia_marvel_data.json';
   
   constructor(private http: HttpClient) { }
+
+  getSuperheroes(): Observable<Superhero[]>{
+    return this.http.get<Superhero[]>(this.jsonURL);
+  }
 
   getDataFromUrl(url: string): Observable<object>{
     const usersRetrieved = this.http.get<object>(url);
