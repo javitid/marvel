@@ -1,0 +1,43 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Create a new Super Hero
+        </mat-panel-title>
+        <mat-panel-description>
+            Click to add your own hero to the list
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="create--inputs-wrapper">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="data.nameLabel">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <input matInput [(ngModel)]="data.genderLabel">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Citizenship</mat-label>
+            <input matInput [(ngModel)]="data.citizenshipLabel">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Skills</mat-label>
+            <input matInput [(ngModel)]="data.skillsLabel">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Occupation</mat-label>
+            <input matInput [(ngModel)]="data.occupationLabel">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Member of</mat-label>
+            <input matInput [(ngModel)]="data.memberOfLabel">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Creator</mat-label>
+            <input matInput [(ngModel)]="data.creatorLabel">
+        </mat-form-field>
+    </div>
+
+    <button mat-button color="primary" (click)="add()">Add Hero</button>
+</mat-expansion-panel>

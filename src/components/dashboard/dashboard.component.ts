@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { CreateComponent } from '../../elements/create/create.component';
 import { DialogComponent } from '../../elements/dialog/dialog.component';
 import { Superhero } from '../../interfaces/superhero.interface';
 import { DataService } from '../../services/data.service'; 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,11 +29,26 @@ export class DashboardComponent implements OnInit {
     this.superheroes$ = this.dataService.getSuperheroes();
   }
 
-  public updateList(newList$: Observable<Superhero[]>) {
+  public updateList(newList$: Observable<Superhero[]>): void {
     this.superheroes$ = newList$;
   }
 
-  public openDialog(superheroSelected: Superhero) {
+  public openDialog(superheroSelected: Superhero): void {
     this.dialog.open(DialogComponent, {data: superheroSelected });
+  }
+
+  public create(): void {
+    const dialogRef = this.dialog.open(CreateComponent, {
+      height: '800px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe( (result: Superhero) => {
+      if (result) {
+        this.superheroes$.subscribe((heroes: Superhero[]) => {
+          this.superheroes$ = of([result, ...heroes]);
+        });
+      }
+    });
   }
 }

@@ -3,7 +3,7 @@
         <app-chips [superheroes$]="superheroes$" (updateList)="updateList($event)" class="dashboard--chips-wrapper"></app-chips>
     </mat-grid-tile>
     <mat-grid-tile colspan="1">
-        <button mat-button color="primary">Create Hero</button>
+        <button mat-button color="primary" (click)="create()">Create Hero</button>
     </mat-grid-tile>
 </mat-grid-list>
 

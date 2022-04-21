@@ -8,8 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -25,6 +28,7 @@ import { TableComponent } from '../elements/table/table.component';
 import { ChipsComponent } from '../elements/chips/chips.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DialogComponent } from '../elements/dialog/dialog.component';
+import { CreateComponent } from '../elements/create/create.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { DialogComponent } from '../elements/dialog/dialog.component';
     PageNotFoundComponent,
     TableComponent,
     ChipsComponent,
-    DialogComponent
+    DialogComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,
@@ -50,8 +55,11 @@ import { DialogComponent } from '../elements/dialog/dialog.component';
     MatAutocompleteModule,
     MatChipsModule,
     MatDialogModule,
+    MatExpansionModule,
+    MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
+    MatInputModule,
     MatSelectModule,
     MatSortModule,
     MatTableModule
