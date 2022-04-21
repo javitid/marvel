@@ -1,5 +1,5 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Observable, of } from 'rxjs';
@@ -18,6 +18,8 @@ export class ChipsComponent implements OnInit {
   public filteredSuperheroes$: Observable<Superhero[]>;
   public superheroesList: Superhero[] = [];
   public allSuperheroes: Superhero[];
+
+  @ViewChild('inputRef', {static: true}) inputRef: ElementRef<HTMLInputElement>;
 
   @Input() superheroes: Observable<Superhero[]>;
   @Output() updateList = new EventEmitter<Observable<Superhero[]>>();
@@ -45,6 +47,10 @@ export class ChipsComponent implements OnInit {
       this.superheroesList.push(selectedSuperheroe);
       this.updateList.emit(of(this.superheroesList));
     }
+
+    // Clear input (both lines are needed because a known issue in the component)
+    this.formControl.setValue('');
+    this.inputRef.nativeElement.value = '';
   }
 
   private _filterByName(value: string|Superhero): Superhero[] {
