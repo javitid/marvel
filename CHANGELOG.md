@@ -25,3 +25,4 @@
 - Bonus Task 3: Add options to delete and modify heroes
 - Bugfix: chips, if all the filters have been cleared returnt the full list
 - Bugfix: show correct literals when edit or create a hero
+- Bugifx: only edit superhero data when confirm

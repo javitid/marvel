@@ -14,7 +14,7 @@ export class CreateComponent {
     @Inject(MAT_DIALOG_DATA) public data: Superhero,
     public dialogRef: MatDialogRef<CreateComponent>
   ) {
-    if (data) { this.newHeroData = data }
+    if (data) { this.newHeroData = {...data} }
   }
 
   public add(): void {
