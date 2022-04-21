@@ -9,12 +9,17 @@ import { Superhero } from '../../interfaces/superhero.interface';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
+  public isNew = true;
   public newHeroData = {} as Superhero;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Superhero,
     public dialogRef: MatDialogRef<CreateComponent>
   ) {
-    if (data) { this.newHeroData = {...data} }
+    if (data) {
+      this.newHeroData = {...data}
+      this.isNew = false;
+    }
   }
 
   public add(): void {

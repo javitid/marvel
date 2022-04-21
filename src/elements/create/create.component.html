@@ -1,17 +1,17 @@
 <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
         <mat-panel-title>
-            {{data ? 'Edit' : 'Create'}} a Super Hero
+            {{isNew ? 'Edit' : 'Create'}} a Super Hero
         </mat-panel-title>
         <mat-panel-description>
-            Click to {{data ? 'edit' : 'create'}} hero
+            Click to {{isNew ? 'edit' : 'create'}} hero
         </mat-panel-description>
     </mat-expansion-panel-header>
 
     <div class="create--inputs-wrapper">
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="newHeroData.nameLabel">
+            <input matInput [(ngModel)]="newHeroData.nameLabel" [disabled]="!isNew">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Gender</mat-label>
@@ -39,5 +39,5 @@
         </mat-form-field>
     </div>
 
-    <button mat-button color="primary" (click)="add()">{{data ? 'Edit' : 'Add'}} Hero</button>
+    <button mat-button color="primary" (click)="add()">{{isNew ? 'Edit' : 'Add'}} Hero</button>
 </mat-expansion-panel>
