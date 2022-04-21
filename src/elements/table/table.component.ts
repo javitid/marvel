@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Observable, Subscription } from 'rxjs';
 
 import { Superhero } from '../../interfaces/superhero.interface';
 
@@ -10,33 +9,23 @@ import { Superhero } from '../../interfaces/superhero.interface';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class TableComponent implements AfterViewInit, OnChanges {
   public superheroesMatTable: MatTableDataSource<Superhero>;
-  private superheroesSubscription: Subscription;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
   @Input() columnsToDisplay: string[];
-  @Input() superheroes$: Observable<Superhero[]>;
+  @Input() superheroes: Superhero[];
   @Output() rowSelected = new EventEmitter<Superhero>();
 
   ngAfterViewInit(): void {
-    this.superheroes$.subscribe( (data: Superhero[]) => {
-      this.superheroesMatTable = new MatTableDataSource(data);
-      this.superheroesMatTable.sort = this.sort;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.superheroesSubscription?.unsubscribe();
+    this.superheroesMatTable = new MatTableDataSource(this.superheroes);
+    this.superheroesMatTable.sort = this.sort;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.superheroesSubscription?.unsubscribe();
-    this.superheroesSubscription = changes.superheroes$.currentValue.subscribe( (data: Superhero[]) => {
-      this.superheroesMatTable = new MatTableDataSource(data);
-      this.superheroesMatTable.sort = this.sort;
-    })
+    this.superheroesMatTable = new MatTableDataSource(changes.superheroes.currentValue);
+    this.superheroesMatTable.sort = this.sort;
   }
 
   public selectSuperhero(superhero: Superhero) {

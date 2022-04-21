@@ -27,3 +27,4 @@
 - Bugfix: show correct literals when edit or create a hero
 - Bugifx: only edit superhero data when confirm
 - Bugfix: only allow to change the name if it's a new hero
+- Refactor to use heroes list instead Observable as input parameter
