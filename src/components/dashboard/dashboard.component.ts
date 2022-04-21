@@ -34,7 +34,20 @@ export class DashboardComponent implements OnInit {
   }
 
   public openDialog(superheroSelected: Superhero): void {
-    this.dialog.open(DialogComponent, {data: superheroSelected });
+    const dialogRef = this.dialog.open(DialogComponent, {data: superheroSelected });
+
+    dialogRef.afterClosed().subscribe( (result: string) => {
+      switch (result) {
+        case 'delete':
+          this.superheroes$.subscribe((heroes: Superhero[]) => {
+            this.superheroes$ = of(heroes.filter((hero: Superhero) => hero.nameLabel !== superheroSelected.nameLabel));
+          });
+          break;
+        case 'edit':
+          this.edit(superheroSelected);
+          break;
+      }
+    });
   }
 
   public create(): void {
@@ -47,6 +60,24 @@ export class DashboardComponent implements OnInit {
       if (result) {
         this.superheroes$.subscribe((heroes: Superhero[]) => {
           this.superheroes$ = of([result, ...heroes]);
+        });
+      }
+    });
+  }
+
+  public edit(superheroSelected: Superhero): void {
+    const dialogRef = this.dialog.open(CreateComponent, {
+      data: superheroSelected,
+      height: '800px',
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe( (result: Superhero) => {
+      if (result) {
+        this.superheroes$.subscribe((heroes: Superhero[]) => {
+          const index = heroes.findIndex((hero: Superhero) => hero.nameLabel === result.nameLabel);
+          heroes[index] = result;
+          this.superheroes$ = of(heroes);
         });
       }
     });

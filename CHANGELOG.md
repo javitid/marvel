@@ -22,3 +22,4 @@
 - Bugfix: clear chips input when an element has been selected
 - Add ngOnChanges in the input observable of the table to be able to update the table when the input changes in the chips component
 - Task 1: add button to create a hero in a form into an expansion panel into a dialog and include it on top of the table
+- Bonus Task 3: Add options to delete and modify heroes

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { Superhero } from '../../interfaces/superhero.interface';
 
@@ -9,10 +9,15 @@ import { Superhero } from '../../interfaces/superhero.interface';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-  public data = {} as Superhero;
-  constructor(public dialogRef: MatDialogRef<CreateComponent>) { }
+  public newHeroData = {} as Superhero;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Superhero,
+    public dialogRef: MatDialogRef<CreateComponent>
+  ) {
+    if (data) { this.newHeroData = data }
+  }
 
   public add(): void {
-    this.dialogRef.close(this.data);
+    this.dialogRef.close(this.newHeroData);
   }
 }

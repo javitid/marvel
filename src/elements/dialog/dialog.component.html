@@ -9,5 +9,6 @@
     <div>Creator: {{data.creatorLabel}}</div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+  <button mat-button color="primary" mat-dialog-close="edit" cdkFocusInitial>Edit</button>
+  <button mat-button color="secondary" mat-dialog-close="delete">Delete</button>
 </mat-dialog-actions>
