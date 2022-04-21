@@ -1,10 +1,10 @@
 <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
         <mat-panel-title>
-            Create a new Super Hero
+            {{data ? 'Edit' : 'Create'}} a Super Hero
         </mat-panel-title>
         <mat-panel-description>
-            Click to add your own hero to the list
+            Click to {{data ? 'edit' : 'create'}} hero
         </mat-panel-description>
     </mat-expansion-panel-header>
 
@@ -39,5 +39,5 @@
         </mat-form-field>
     </div>
 
-    <button mat-button color="primary" (click)="add()">Add Hero</button>
+    <button mat-button color="primary" (click)="add()">{{data ? 'Edit' : 'Add'}} Hero</button>
 </mat-expansion-panel>

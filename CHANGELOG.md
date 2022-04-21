@@ -24,3 +24,4 @@
 - Task 1: add button to create a hero in a form into an expansion panel into a dialog and include it on top of the table
 - Bonus Task 3: Add options to delete and modify heroes
 - Bugfix: chips, if all the filters have been cleared returnt the full list
+- Bugfix: show correct literals when edit or create a hero
