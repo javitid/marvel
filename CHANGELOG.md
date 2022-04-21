@@ -28,3 +28,4 @@
 - Bugifx: only edit superhero data when confirm
 - Bugfix: only allow to change the name if it's a new hero
 - Refactor to use heroes list instead Observable as input parameter
+- Set name as required to create a new hero

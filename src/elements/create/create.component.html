@@ -11,7 +11,7 @@
     <div class="create--inputs-wrapper">
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="newHeroData.nameLabel" [disabled]="!isNew">
+            <input matInput [(ngModel)]="newHeroData.nameLabel" [disabled]="!isNew" [required]="true">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Gender</mat-label>
@@ -39,5 +39,5 @@
         </mat-form-field>
     </div>
 
-    <button mat-button color="primary" (click)="add()">{{isNew ? 'Add' : 'Edit'}} Hero</button>
+    <button mat-button color="primary" [disabled]="!newHeroData.nameLabel" (click)="add()">{{isNew ? 'Add' : 'Edit'}} Hero</button>
 </mat-expansion-panel>
