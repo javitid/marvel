@@ -39,7 +39,13 @@ export class ChipsComponent implements OnInit {
 
   public remove(superhero: Superhero): void {
     this.superheroesList = this.superheroesList.filter(((value: Superhero) => value !== superhero));
-    this.updateList.emit(of(this.superheroesList));
+
+    // If all the filters have been cleared returnt the full list
+    if (this.superheroesList.length === 0) {
+      this.updateList.emit(of(this.allSuperheroes));
+    } else {
+      this.updateList.emit(of(this.superheroesList));
+    }
   }
 
   public selected(event: MatAutocompleteSelectedEvent): void {
