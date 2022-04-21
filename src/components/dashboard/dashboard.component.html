@@ -1,2 +1,8 @@
-<app-chips [superheroes]="superheroes" (updateList)="updateList($event)"></app-chips>
+<mat-grid-list cols="6" rowHeight="80px">
+    <mat-grid-tile colspan="5">
+        <app-chips [superheroes]="superheroes" (updateList)="updateList($event)" class="dashboard--chips-wrapper"></app-chips>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1"></mat-grid-tile>
+</mat-grid-list>
+
 <app-table [columnsToDisplay]="columnsToDisplay" [superheroes]="superheroes" (rowSelected)="openDialog($event)"></app-table>

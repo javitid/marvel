@@ -18,3 +18,4 @@
 - Solve issues deploying in gitlab, wrong assets route,...
 - Add chips component into elements folder, first version with functions but without table updating
 - Add dialog component into elements folder to be shown when click on any of the superheroes to show his/her info
+- Add grid in the header
