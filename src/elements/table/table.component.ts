@@ -16,11 +16,11 @@ export class TableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
   @Input() columnsToDisplay: string[];
-  @Input() superheroes: Observable<Superhero[]>;
+  @Input() superheroes$: Observable<Superhero[]>;
   @Output() rowSelected = new EventEmitter<Superhero>();
 
   ngAfterViewInit(): void {
-    this.superheroes.subscribe( (data: Superhero[]) => {
+    this.superheroes$.subscribe( (data: Superhero[]) => {
       this.superheroesMatTable = new MatTableDataSource(data);
       this.superheroesMatTable.sort = this.sort;
     })

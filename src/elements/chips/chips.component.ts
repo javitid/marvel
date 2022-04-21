@@ -21,11 +21,11 @@ export class ChipsComponent implements OnInit {
 
   @ViewChild('inputRef', {static: true}) inputRef: ElementRef<HTMLInputElement>;
 
-  @Input() superheroes: Observable<Superhero[]>;
+  @Input() superheroes$: Observable<Superhero[]>;
   @Output() updateList = new EventEmitter<Observable<Superhero[]>>();
 
   ngOnInit(): void {
-    this.superheroes.subscribe( (data: Superhero[]) => {
+    this.superheroes$.subscribe( (data: Superhero[]) => {
       this.allSuperheroes = data;
 
       this.filteredSuperheroes$ = this.formControl.valueChanges.pipe(

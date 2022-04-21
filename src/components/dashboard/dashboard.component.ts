@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   public columnsToDisplay: string[];
-  public superheroes: Observable<Superhero[]>;
+  public superheroes$: Observable<Superhero[]>;
 
   constructor(
     public readonly dialog: MatDialog,
@@ -25,11 +25,11 @@ export class DashboardComponent implements OnInit {
     this.columnsToDisplay = ['nameLabel', 'genderLabel', 'citizenshipLabel', 'skillsLabel', 'occupationLabel', 'memberOfLabel', 'creatorLabel'];
 
     // Get superheroes from the service
-    this.superheroes = this.dataService.getSuperheroes();
+    this.superheroes$ = this.dataService.getSuperheroes();
   }
 
-  public updateList(newList: Observable<Superhero[]>) {
-    this.superheroes = newList;
+  public updateList(newList$: Observable<Superhero[]>) {
+    this.superheroes$ = newList$;
   }
 
   public openDialog(superheroSelected: Superhero) {
