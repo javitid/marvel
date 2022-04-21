@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Superhero } from '../../interfaces/superhero.interface';
 
@@ -10,8 +10,9 @@ import { Superhero } from '../../interfaces/superhero.interface';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements AfterViewInit {
+export class TableComponent implements AfterViewInit, OnChanges, OnDestroy {
   public superheroesMatTable: MatTableDataSource<Superhero>;
+  private superheroesSubscription: Subscription;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
@@ -21,6 +22,18 @@ export class TableComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.superheroes$.subscribe( (data: Superhero[]) => {
+      this.superheroesMatTable = new MatTableDataSource(data);
+      this.superheroesMatTable.sort = this.sort;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.superheroesSubscription?.unsubscribe();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.superheroesSubscription?.unsubscribe();
+    this.superheroesSubscription = changes.superheroes$.currentValue.subscribe( (data: Superhero[]) => {
       this.superheroesMatTable = new MatTableDataSource(data);
       this.superheroesMatTable.sort = this.sort;
     })

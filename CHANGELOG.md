@@ -20,3 +20,4 @@
 - Add dialog component into elements folder to be shown when click on any of the superheroes to show his/her info
 - Add grid in the header
 - Bugfix: clear chips input when an element has been selected
+- Add ngOnChanges in the input observable of the table to be able to update the table when the input changes in the chips component
