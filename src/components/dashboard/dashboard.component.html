@@ -5,7 +5,6 @@
         </mat-grid-tile>
         <mat-grid-tile colspan="1">
             <button mat-button color="primary" (click)="create()">Create Hero</button>
-            <button mat-button color="primary" (click)="restoreSuperheroes()">Restore Superheroes</button>
         </mat-grid-tile>
     </mat-grid-list>
 
@@ -21,4 +20,5 @@
         <app-graphs [superheroes]="superheroes"></app-graphs>
     </mat-expansion-panel>
     <app-table [columnsToDisplay]="columnsToDisplay" [superheroes]="superheroesToShow" (rowSelected)="openInfoDialog($event)"></app-table>
+    <button mat-button color="primary" (click)="restoreSuperheroes()">Restore Superheroes</button>
 </div>
