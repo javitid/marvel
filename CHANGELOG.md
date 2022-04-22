@@ -29,3 +29,4 @@
 - Bugfix: only allow to change the name if it's a new hero
 - Refactor to use heroes list instead Observable as input parameter
 - Set name as required to create a new hero
+- Bugfix: update full list into chips component only when there are changes from outside of the component

@@ -17,6 +17,10 @@ export class DataService {
     return this.http.get<Superhero[]>(this.jsonURL);
   }
 
+  saveSuperheroes(superheroes: Superhero[]): void {
+    // TODO: save new data in the JSON file
+  }
+
   getDataFromUrl(url: string): Observable<object>{
     const usersRetrieved = this.http.get<object>(url);
     return usersRetrieved;

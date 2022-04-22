@@ -1,5 +1,5 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Observable } from 'rxjs';
@@ -12,16 +12,17 @@ import { Superhero } from '../../interfaces/superhero.interface';
   templateUrl: './chips.component.html',
   styleUrls: ['./chips.component.scss'],
 })
-export class ChipsComponent implements OnInit {
+export class ChipsComponent implements OnChanges, OnInit {
   public separatorKeysCodes: number[] = [ENTER, COMMA];
   public formControl = new FormControl();
   public filteredSuperheroes$: Observable<Superhero[]>;
-  public superheroesList: Superhero[] = [];
+  public superheroesChips: Superhero[] = [];
   public allSuperheroes: Superhero[] = [];
 
   @ViewChild('inputRef', {static: true}) inputRef: ElementRef<HTMLInputElement>;
 
   @Input() superheroes: Superhero[];
+  @Input() changes: boolean;
   @Output() updateList = new EventEmitter<Superhero[]>();
 
   ngOnInit(): void {
@@ -35,22 +36,29 @@ export class ChipsComponent implements OnInit {
     );
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    // Only update the full list when there are changes from outside of the component
+    if (changes.changes?.currentValue) {
+      this.allSuperheroes = changes.superheroes.currentValue;
+    }
+  }
+
   public remove(superhero: Superhero): void {
-    this.superheroesList = this.superheroesList.filter(((value: Superhero) => value !== superhero));
+    this.superheroesChips = this.superheroesChips.filter(((value: Superhero) => value !== superhero));
 
     // If all the filters have been cleared return the full list
-    if (this.superheroesList.length === 0) {
+    if (this.superheroesChips.length === 0) {
       this.updateList.emit(this.allSuperheroes);
     } else {
-      this.updateList.emit(this.superheroesList);
+      this.updateList.emit(this.superheroesChips);
     }
   }
 
   public selected(event: MatAutocompleteSelectedEvent): void {
     const selectedSuperheroe = this.allSuperheroes.find((superhero) => superhero.nameLabel === event.option.value.nameLabel);
     if (selectedSuperheroe) {
-      this.superheroesList.push(selectedSuperheroe);
-      this.updateList.emit(this.superheroesList);
+      this.superheroesChips.push(selectedSuperheroe);
+      this.updateList.emit(this.superheroesChips);
     }
 
     // Clear input (both lines are needed because a known issue in the component)

@@ -1,7 +1,7 @@
 <mat-form-field class="chips--wrapper" appearance="fill">
     <mat-label>Favorite Super Heroes</mat-label>
     <mat-chip-list #chipList aria-label="Marvel Super Heroes">
-        <mat-chip *ngFor="let superhero of superheroesList" (removed)="remove(superhero)">
+        <mat-chip *ngFor="let superhero of superheroesChips" (removed)="remove(superhero)">
             {{superhero.nameLabel}}
             <button matChipRemove>
             <mat-icon>cancel</mat-icon>

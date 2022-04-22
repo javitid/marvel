@@ -1,7 +1,7 @@
 <div *ngIf="this.superheroes">
     <mat-grid-list cols="6" rowHeight="80px">
         <mat-grid-tile colspan="5">
-            <app-chips [superheroes]="this.superheroes" (updateList)="updateList($event)" class="dashboard--chips-wrapper"></app-chips>
+            <app-chips [superheroes]="superheroes" [changes]="changes" (updateList)="updateList($event)" class="dashboard--chips-wrapper"></app-chips>
         </mat-grid-tile>
         <mat-grid-tile colspan="1">
             <button mat-button color="primary" (click)="create()">Create Hero</button>

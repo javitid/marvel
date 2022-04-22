@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class DashboardComponent implements OnDestroy, OnInit {
   public columnsToDisplay: string[];
   public superheroes: Superhero[];
+  public changes: boolean;
   public superheroesSubscription: Subscription;
 
   constructor(
@@ -37,6 +38,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   public updateList(newList: Superhero[]): void {
+    this.changes = false;
     this.superheroes = newList;
     this.forceTableReload();
   }
@@ -48,6 +50,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
       switch (result) {
         case 'delete':
           this.superheroes = this.superheroes.filter((hero: Superhero) => hero.nameLabel !== superheroSelected.nameLabel);
+          this.changes = true;
           break;
         case 'edit':
           this.edit(superheroSelected);
@@ -65,6 +68,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
     dialogRef.afterClosed().subscribe( (result: Superhero) => {
       if (result) {
         this.superheroes = [result, ...this.superheroes];
+        this.changes = true;
         this.forceTableReload();
       }
     });
