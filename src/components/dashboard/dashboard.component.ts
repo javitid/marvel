@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { Headers } from '../../enums/headers.enum';
 import { CreateComponent } from '../../elements/create/create.component';
 import { DialogComponent } from '../../elements/dialog/dialog.component';
 import { Superhero } from '../../interfaces/superhero.interface';
@@ -26,7 +27,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     // Keys from interface to show them as headers in the table
-    this.columnsToDisplay = ['nameLabel', 'genderLabel', 'citizenshipLabel', 'skillsLabel', 'occupationLabel', 'memberOfLabel', 'creatorLabel'];
+    this.columnsToDisplay = Object.values(Headers);
 
     // Get superheroes from the service
     this.superheroesSubscription = this.dataService.getSuperheroes().subscribe( (heroesList: Superhero[]) => {

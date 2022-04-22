@@ -31,3 +31,4 @@
 - Set name as required to create a new hero
 - Bugfix: update full list into chips component only when there are changes from outside of the component
 - Bugfix: fix issue when add hero with some chips set
+- Bonus Task 2: Add D3 charts, only bar charts by now

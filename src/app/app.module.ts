@@ -29,6 +29,7 @@ import { ChipsComponent } from '../elements/chips/chips.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DialogComponent } from '../elements/dialog/dialog.component';
 import { CreateComponent } from '../elements/create/create.component';
+import { GraphsComponent } from '../elements/graphs/graphs.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CreateComponent } from '../elements/create/create.component';
     TableComponent,
     ChipsComponent,
     DialogComponent,
-    CreateComponent
+    CreateComponent,
+    GraphsComponent
   ],
   imports: [
     CommonModule,
