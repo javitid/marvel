@@ -32,3 +32,4 @@
 - Bugfix: update full list into chips component only when there are changes from outside of the component
 - Bugfix: fix issue when add hero with some chips set
 - Bonus Task 2: Add D3 charts, only bar charts by now
+- Use expansion panel for the graphs instead for the form to add/edit a hero
