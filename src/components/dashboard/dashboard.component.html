@@ -8,6 +8,16 @@
         </mat-grid-tile>
     </mat-grid-list>
 
-    <app-graphs [superheroes]="superheroes"></app-graphs>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="dashboard--charts-wrapper">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Show graphs
+            </mat-panel-title>
+            <mat-panel-description>
+                Click to {{panelOpenState ? 'hide' : 'show'}} graphs
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-graphs [superheroes]="superheroes"></app-graphs>
+    </mat-expansion-panel>
     <app-table [columnsToDisplay]="columnsToDisplay" [superheroes]="superheroesToShow" (rowSelected)="openInfoDialog($event)"></app-table>
 </div>

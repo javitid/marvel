@@ -1,13 +1,5 @@
-<mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            {{isNew ? 'Create' : 'Edit'}} a Super Hero
-        </mat-panel-title>
-        <mat-panel-description>
-            Click to {{isNew ? 'create' : 'edit'}} hero
-        </mat-panel-description>
-    </mat-expansion-panel-header>
-
+<div class="create--form-wrapper">
+    <h2>{{isNew ? 'Create a new superhero' : ('Edit ' + newHeroData.nameLabel)}}</h2>
     <div class="create--inputs-wrapper">
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
@@ -40,4 +32,4 @@
     </div>
 
     <button mat-button color="primary" [disabled]="!newHeroData.nameLabel" (click)="add()">{{isNew ? 'Add' : 'Edit'}} Hero</button>
-</mat-expansion-panel>
+</div>

@@ -19,6 +19,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   public superheroesToShow: Superhero[];
   public changes: boolean;
   public superheroesSubscription: Subscription;
+  public panelOpenState = false;
 
   constructor(
     public readonly dialog: MatDialog,
