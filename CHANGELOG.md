@@ -30,3 +30,4 @@
 - Refactor to use heroes list instead Observable as input parameter
 - Set name as required to create a new hero
 - Bugfix: update full list into chips component only when there are changes from outside of the component
+- Bugfix: fix issue when add hero with some chips set

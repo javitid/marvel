@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class DashboardComponent implements OnDestroy, OnInit {
   public columnsToDisplay: string[];
   public superheroes: Superhero[];
+  public superheroesToShow: Superhero[];
   public changes: boolean;
   public superheroesSubscription: Subscription;
 
@@ -30,6 +31,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
     // Get superheroes from the service
     this.superheroesSubscription = this.dataService.getSuperheroes().subscribe( (heroesList: Superhero[]) => {
       this.superheroes = heroesList;
+      this.superheroesToShow = this.superheroes;
     });
   }
 
@@ -39,7 +41,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   public updateList(newList: Superhero[]): void {
     this.changes = false;
-    this.superheroes = newList;
+    this.superheroesToShow = newList;
     this.forceTableReload();
   }
 
@@ -50,6 +52,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
       switch (result) {
         case 'delete':
           this.superheroes = this.superheroes.filter((hero: Superhero) => hero.nameLabel !== superheroSelected.nameLabel);
+          this.superheroesToShow = this.superheroes;
           this.changes = true;
           break;
         case 'edit':
@@ -68,6 +71,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
     dialogRef.afterClosed().subscribe( (result: Superhero) => {
       if (result) {
         this.superheroes = [result, ...this.superheroes];
+        this.superheroesToShow = this.superheroes;
         this.changes = true;
         this.forceTableReload();
       }
@@ -85,6 +89,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
       if (result) {
         const index = this.superheroes.findIndex((hero: Superhero) => hero.nameLabel === result.nameLabel);
         this.superheroes[index] = result;
+        this.superheroesToShow[index] = this.superheroes[index];
         this.forceTableReload();
       }
     });
@@ -92,6 +97,6 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   // Trick to force ngOnChanges into table component and reload the table content
   private forceTableReload(): void {
-    this.superheroes = [...this.superheroes];
+    this.superheroesToShow = [...this.superheroesToShow];
   }
 }

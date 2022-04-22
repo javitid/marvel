@@ -39,6 +39,8 @@ export class ChipsComponent implements OnChanges, OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     // Only update the full list when there are changes from outside of the component
     if (changes.changes?.currentValue) {
+      // Clear chips
+      this.superheroesChips = [];
       this.allSuperheroes = changes.superheroes.currentValue;
     }
   }
