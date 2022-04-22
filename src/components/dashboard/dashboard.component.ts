@@ -41,22 +41,27 @@ export class DashboardComponent implements OnDestroy, OnInit {
     this.superheroesSubscription?.unsubscribe();
   }
 
+  // Callback when the list is filtered by the search input. It should only update the view and don't change the list of heroes
   public updateList(newList: Superhero[]): void {
     this.changes = false;
     this.superheroesToShow = newList;
     this.forceTableReload();
   }
 
+  // Callback to show a dialog when user click on the row of an heroe
   public openInfoDialog(superheroSelected: Superhero): void {
     const dialogRef = this.dialog.open(DialogComponent, { data: superheroSelected });
 
     dialogRef.afterClosed().subscribe( (result: string) => {
       switch (result) {
+        // Delete a hero
         case 'delete':
           this.superheroes = this.superheroes.filter((hero: Superhero) => hero.nameLabel !== superheroSelected.nameLabel);
           this.superheroesToShow = this.superheroes;
           this.changes = true;
+          this.dataService.saveSuperheroes(this.superheroes);
           break;
+        // Edit a hero
         case 'edit':
           this.edit(superheroSelected);
           break;
@@ -64,6 +69,13 @@ export class DashboardComponent implements OnDestroy, OnInit {
     });
   }
 
+  // Restore super heroes from the assets file
+  public restoreSuperheroes(): void {
+    this.dataService.restoreSuperheroes();
+    this.ngOnInit();
+  }
+
+  // Create a new hero
   public create(): void {
     const dialogRef = this.dialog.open(CreateComponent, {
       height: '800px',
@@ -75,11 +87,13 @@ export class DashboardComponent implements OnDestroy, OnInit {
         this.superheroes = [result, ...this.superheroes];
         this.superheroesToShow = this.superheroes;
         this.changes = true;
+        this.dataService.saveSuperheroes(this.superheroes);
         this.forceTableReload();
       }
     });
   }
 
+  // Edit a hero
   public edit(superheroSelected: Superhero): void {
     const dialogRef = this.dialog.open(CreateComponent, {
       data: superheroSelected,
@@ -92,6 +106,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
         const index = this.superheroes.findIndex((hero: Superhero) => hero.nameLabel === result.nameLabel);
         this.superheroes[index] = result;
         this.superheroesToShow[index] = this.superheroes[index];
+        this.dataService.saveSuperheroes(this.superheroes);
         this.forceTableReload();
       }
     });

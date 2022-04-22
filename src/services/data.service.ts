@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { Superhero } from '../interfaces/superhero.interface';
 
+const LOCAL_STORAGE_ID = 'superheroes';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +15,17 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getSuperheroes(): Observable<Superhero[]>{
-    return this.http.get<Superhero[]>(this.jsonURL);
+    return localStorage.getItem(LOCAL_STORAGE_ID) ?
+      of(JSON.parse(localStorage.getItem(LOCAL_STORAGE_ID) || '')):
+      this.http.get<Superhero[]>(this.jsonURL);
   }
 
   saveSuperheroes(superheroes: Superhero[]): void {
-    // TODO: save new data in the JSON file
+    localStorage.setItem(LOCAL_STORAGE_ID, JSON.stringify(superheroes));
+  }
+
+  restoreSuperheroes(): void {
+    localStorage.removeItem(LOCAL_STORAGE_ID);
   }
 
   getDataFromUrl(url: string): Observable<object>{

@@ -24,8 +24,10 @@ export class TableComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.superheroesMatTable = new MatTableDataSource(changes.superheroes.currentValue);
-    this.superheroesMatTable.sort = this.sort;
+    if (changes.superheroes) {
+      this.superheroesMatTable = new MatTableDataSource(changes.superheroes.currentValue);
+      this.superheroesMatTable.sort = this.sort;
+    }
   }
 
   public selectSuperhero(superhero: Superhero) {

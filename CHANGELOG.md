@@ -33,3 +33,4 @@
 - Bugfix: fix issue when add hero with some chips set
 - Bonus Task 2: Add D3 charts, only bar charts by now
 - Use expansion panel for the graphs instead for the form to add/edit a hero
+- Bonus Task 3: Data persistent using localStorage, added a button to restore the original heroes list
