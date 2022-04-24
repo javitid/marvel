@@ -68,7 +68,7 @@ import { GraphsComponent } from '../elements/graphs/graphs.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-    // { provide: ErrorHandler, useClass: GlobalErrorHandlerService },
+    { provide: ErrorHandler, useClass: GlobalErrorHandlerService },
   ],
   bootstrap: [AppComponent]
 })

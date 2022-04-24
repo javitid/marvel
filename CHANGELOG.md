@@ -35,3 +35,4 @@
 - Use expansion panel for the graphs instead for the form to add/edit a hero
 - Bonus Task 3: Data persistent using localStorage, added a button to restore the original heroes list
 - Set Unit Tests to run in graphs component. It has been forced to be the only running with `npm run test` or `npm run coverage`
+- Bonus Task 2: Add D3 pie charts for more than 25 items
