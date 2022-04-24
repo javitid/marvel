@@ -11,7 +11,7 @@ import { Graph } from '../../interfaces/graph.interface';
 
 import { Superhero } from '../../interfaces/superhero.interface';
 
-const MAX_ITEMS_TO_SHOW_BAR_CHART = 25;
+const MAX_ITEMS_TO_SHOW_BAR_CHART = 10;
 
 @Component({
   selector: 'app-graphs',
@@ -97,8 +97,8 @@ export class GraphsComponent implements OnInit {
   }
 
   private drawPieChart(data: Graph[]): void {
-    const width = 200;
-    const height = 150;
+    const width = 1000;
+    const height = 1000;
     const radius = Math.min(width, height) / 2;
 
     // Init SVG
@@ -124,7 +124,7 @@ export class GraphsComponent implements OnInit {
     const svg = d3.select('#chart')
       .append('svg')
       .attr('width', '200px')
-      .attr('height', '150px')
+      .attr('height', '200px')
       .attr('viewBox', '0 0 ' + Math.min(width, height) + ' ' + Math.min(width, height))
       .append('g')
       .attr('transform', 'translate(' + Math.min(width, height) / 2 + ',' + Math.min(width, height) / 2 + ')');
