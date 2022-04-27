@@ -28,13 +28,11 @@ export class GraphsComponent implements OnInit {
   ngOnInit(): void {
     // Get Map with name, value of all the elements of each header
     this.chartsMap = this.graphsService.getChartsData(this.superheroes);
-    this.drawChart(this.chartsMap, Headers.nameLabel);
-    this.drawChart(this.chartsMap, Headers.genderLabel);
-    this.drawChart(this.chartsMap, Headers.citizenshipLabel);
-    this.drawChart(this.chartsMap, Headers.skillsLabel);
-    this.drawChart(this.chartsMap, Headers.occupationLabel);
-    this.drawChart(this.chartsMap, Headers.memberOfLabel);
-    this.drawChart(this.chartsMap, Headers.creatorLabel);
+
+    const headers = Object.values(Headers);
+    for (let header of headers) {
+      this.drawChart(this.chartsMap, header);
+    }
   }
 
   private drawChart(chartsMap: Map<Headers, Graph[]>, header: Headers): void {
