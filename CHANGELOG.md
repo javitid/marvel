@@ -37,3 +37,4 @@
 - Set Unit Tests to run in graphs component. It has been forced to be the only running with `npm run test` or `npm run coverage`
 - Bonus Task 2: Add D3 pie charts for more than 25 items
 - Bonus Task 4: set table header sticky
+- Bugfix: several chips with the same name, only set a chip with the superhero selected when it was not already in the chips list

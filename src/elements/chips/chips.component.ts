@@ -57,10 +57,13 @@ export class ChipsComponent implements OnChanges, OnInit {
   }
 
   public selected(event: MatAutocompleteSelectedEvent): void {
-    const selectedSuperheroe = this.allSuperheroes.find((superhero) => superhero.nameLabel === event.option.value.nameLabel);
-    if (selectedSuperheroe) {
-      this.superheroesChips.push(selectedSuperheroe);
-      this.updateList.emit(this.superheroesChips);
+    // Only set a chip with the superhero selected when it was not already in the chips list
+    if (!this.superheroesChips.some((hero: Superhero) => hero.nameLabel === event.option.value.nameLabel)) {
+      const selectedSuperheroe = this.allSuperheroes.find((superhero) => superhero.nameLabel === event.option.value.nameLabel);
+      if (selectedSuperheroe) {
+        this.superheroesChips.push(selectedSuperheroe);
+        this.updateList.emit(this.superheroesChips);
+      }
     }
 
     // Clear input (both lines are needed because a known issue in the component)
