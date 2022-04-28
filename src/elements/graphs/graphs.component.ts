@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
@@ -18,19 +18,28 @@ const MAX_ITEMS_TO_SHOW_BAR_CHART = 10;
   templateUrl: './graphs.component.html',
   styleUrls: ['./graphs.component.scss']
 })
-export class GraphsComponent implements OnInit {
+export class GraphsComponent {
   public chartsMap = new Map<Headers, Graph[]>();
 
-  @Input() superheroes: Superhero[];
+  private _superheroes: Superhero[];
+  get superheroes(): Superhero[] {
+    return this._superheroes;
+  }
+  @Input() set superheroes(value: Superhero[]) {
+    this._superheroes = value;
+    // Clear previous charts
+    d3.select('#chart').selectAll("*").remove();
+    // Calculate and draw new charts
+    this.calculateCharts();
+  };
 
   constructor( public readonly graphsService: GraphsService ) { }
 
-  ngOnInit(): void {
+  private calculateCharts(): void {
     // Get Map with name, value of all the elements of each header
-    this.chartsMap = this.graphsService.getChartsData(this.superheroes);
+    this.chartsMap = this.graphsService.getChartsData(this._superheroes);
 
-    const headers = Object.values(Headers);
-    for (let header of headers) {
+    for (let header of Object.values(Headers)) {
       this.drawChart(this.chartsMap, header);
     }
   }
