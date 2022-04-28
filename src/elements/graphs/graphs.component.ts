@@ -11,7 +11,7 @@ import { Graph } from '../../interfaces/graph.interface';
 
 import { Superhero } from '../../interfaces/superhero.interface';
 
-const MAX_ITEMS_TO_SHOW_BAR_CHART = 10;
+const MAX_ITEMS_TO_SHOW_BAR_CHART = 5;
 
 @Component({
   selector: 'app-graphs',

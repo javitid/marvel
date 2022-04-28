@@ -105,8 +105,6 @@ export class DashboardComponent implements OnDestroy, OnInit {
       if (result) {
         const index = this.superheroes.findIndex((hero: Superhero) => hero.nameLabel === result.nameLabel);
         this.superheroes[index] = result;
-        // Force changes in superheroes to reload graphs
-        this.superheroes = [...this.superheroes];
         this.superheroesToShow[index] = this.superheroes[index];
         this.dataService.saveSuperheroes(this.superheroes);
         this.forceTableReload();

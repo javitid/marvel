@@ -17,7 +17,7 @@
                 Click to {{panelOpenState ? 'hide' : 'show'}} graphs
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <app-graphs [superheroes]="superheroes"></app-graphs>
+        <app-graphs [superheroes]="superheroesToShow"></app-graphs>
     </mat-expansion-panel>
     <app-table [columnsToDisplay]="columnsToDisplay" [superheroes]="superheroesToShow" (rowSelected)="openInfoDialog($event)"></app-table>
     <button mat-button color="primary" (click)="restoreSuperheroes()">Restore Superheroes</button>
